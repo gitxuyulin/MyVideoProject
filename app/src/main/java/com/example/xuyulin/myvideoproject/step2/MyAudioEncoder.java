@@ -23,7 +23,7 @@ public class MyAudioEncoder {
     private int CHANNEL_NUM = 1;
     private int SAMPLE_RATE = 44100;
     private int KEY_BIT_RATE = 96000;
-    private int MAX_INPUT_SIZE = 16384;
+    private int MAX_INPUT_SIZE = 16384;//16bit
     private MediaCodec mediaEncoder;
     private AudioEncoderListener listener;
     private boolean isOpen = false;
