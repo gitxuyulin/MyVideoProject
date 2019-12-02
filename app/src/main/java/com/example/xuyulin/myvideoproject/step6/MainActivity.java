@@ -49,8 +49,6 @@ import java.util.List;
 
 /**
  * use 自定义相机Camera2
- * author 孙尚磊
- * create time 2017-4-25
  */
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class MainActivity extends AppCompatActivity {

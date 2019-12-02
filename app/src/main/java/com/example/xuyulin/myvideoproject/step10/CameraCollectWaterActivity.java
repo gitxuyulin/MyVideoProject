@@ -68,6 +68,7 @@ public class CameraCollectWaterActivity extends AppCompatActivity implements Vie
         switch (v.getId()) {
             case R.id.start_addwater:
                 Toast.makeText(this, "视频添加水印", Toast.LENGTH_SHORT).show();
+                //时间不够了，未实现
                 break;
         }
     }
