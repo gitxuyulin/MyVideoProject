@@ -108,11 +108,11 @@
         </activity>
 
         <activity android:name=".step6.MainActivity">
-            <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--            <action android:name="android.intent.action.MAIN" />-->
 
-            <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--            <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity android:name=".step7.VideoMediaEncoderActivity">
             <!--<intent-filter>-->
@@ -148,6 +148,13 @@
 
             <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
+        </activity>
+        <activity android:name=".step11.PreviewActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
     </application>
