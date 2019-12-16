@@ -37,7 +37,7 @@ public class PreviewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_preview_layout);
         initViews();
         openCamera();
-        previewRender = new PreviewRender();
+        previewRender = new PreviewRender(previewSurface);
         previewSurface.setRenderer(previewRender);
         previewSurface.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
         previewSurface.setZOrderMediaOverlay(true);

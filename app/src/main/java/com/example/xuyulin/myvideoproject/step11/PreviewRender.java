@@ -5,6 +5,7 @@ import android.hardware.Camera;
 import android.opengl.GLES11Ext;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
+import android.util.Log;
 
 import java.io.IOException;
 
@@ -20,6 +21,11 @@ public class PreviewRender implements GLSurfaceView.Renderer, SurfaceTexture.OnF
 
     private int mOutputTextureId = 0;
     private SurfaceTexture surfaceTexture;
+    private GLSurfaceView mView;
+
+    public PreviewRender(GLSurfaceView previewSurface) {
+        mView = previewSurface;
+    }
 
     public void setUpCamera(Camera camera) {
         int[] textures = new int[1];
@@ -42,27 +48,28 @@ public class PreviewRender implements GLSurfaceView.Renderer, SurfaceTexture.OnF
     }
 
     @Override
-    public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-
-    }
-
-    @Override
-    public void onSurfaceChanged(GL10 gl, int width, int height) {
-
-    }
-
-    @Override
-    public void onDrawFrame(GL10 gl) {
-
-    }
-
-    @Override
     public void onFrameAvailable(SurfaceTexture surfaceTexture) {
-
+        Log.e("xyl", "onFrameAvailable");
     }
 
     @Override
     public void onPreviewFrame(byte[] data, Camera camera) {
-
+        Log.e("xyl", "onPreviewFrame");
     }
+
+    @Override
+    public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+        Log.e("xyl", "onSurfaceCreated");
+    }
+
+    @Override
+    public void onSurfaceChanged(GL10 gl, int width, int height) {
+        Log.e("xyl", "onSurfaceChanged");
+    }
+
+    @Override
+    public void onDrawFrame(GL10 gl) {
+        Log.e("xyl", "onDrawFrame");
+    }
+
 }
