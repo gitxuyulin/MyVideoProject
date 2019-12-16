@@ -151,7 +151,8 @@ public class PlayMp4Activity extends AppCompatActivity implements VideoThread.Vi
     private String initData() {
         File dir = getFilesDir();
         File path = new File(dir, "shape.mp4");
-        final BufferedInputStream in = new BufferedInputStream(getResources().openRawResource(R.raw.shape_of_my_heart));
+        //R.raw.shape_of_my_heart
+        final BufferedInputStream in = new BufferedInputStream(getResources().openRawResource(0));
         final BufferedOutputStream out;
         try {
             out = new BufferedOutputStream(openFileOutput(path.getName(), Context.MODE_PRIVATE));

@@ -29,14 +29,19 @@ public class PreviewActivity extends AppCompatActivity {
     private int mfps = 20;
     private boolean cameraAutoFocus = false;
     private boolean cameraFlashModes = false;
+    private PreviewRender previewRender;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_opengl_water);
+        setContentView(R.layout.activity_preview_layout);
         initViews();
         openCamera();
-
+        previewRender = new PreviewRender();
+        previewSurface.setRenderer(previewRender);
+        previewSurface.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
+        previewSurface.setZOrderMediaOverlay(true);
+        previewRender.setUpCamera(mCamera);
     }
 
     public void initViews() {
@@ -116,6 +121,7 @@ public class PreviewActivity extends AppCompatActivity {
 //        }
 
         mCamera.setParameters(parameters);
+        //通过addCallbackBuffer(byte[])使用一个缓存容器来显示这些数据.
         mCamera.addCallbackBuffer(new byte[previewBufferSize]);
         mCamera.addCallbackBuffer(new byte[previewBufferSize]);
         mCamera.addCallbackBuffer(new byte[previewBufferSize]);
