@@ -23,6 +23,9 @@ public class PreviewRender implements GLSurfaceView.Renderer, SurfaceTexture.OnF
     private SurfaceTexture surfaceTexture;
     private GLSurfaceView mView;
     private float[] mTextureTransformMatrix = new float[16];
+    protected DrawTexture dOES;
+    private int mScreenWidth;
+    private int mScreenHeight;
 
     public PreviewRender(GLSurfaceView previewSurface) {
         mView = previewSurface;
@@ -69,6 +72,9 @@ public class PreviewRender implements GLSurfaceView.Renderer, SurfaceTexture.OnF
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
         Log.e("xyl", "onSurfaceChanged");
+        mScreenWidth = width;
+        mScreenHeight = height;
+        dOES = new DrawTexture(528, 944, width, height);
     }
 
     @Override
