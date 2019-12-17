@@ -22,6 +22,7 @@ public class PreviewRender implements GLSurfaceView.Renderer, SurfaceTexture.OnF
     private int mOutputTextureId = 0;
     private SurfaceTexture surfaceTexture;
     private GLSurfaceView mView;
+    private float[] mTextureTransformMatrix = new float[16];
 
     public PreviewRender(GLSurfaceView previewSurface) {
         mView = previewSurface;
@@ -50,11 +51,14 @@ public class PreviewRender implements GLSurfaceView.Renderer, SurfaceTexture.OnF
     @Override
     public void onFrameAvailable(SurfaceTexture surfaceTexture) {
         Log.e("xyl", "onFrameAvailable");
+        mView.requestRender();
     }
 
     @Override
     public void onPreviewFrame(byte[] data, Camera camera) {
         Log.e("xyl", "onPreviewFrame");
+        surfaceTexture.updateTexImage();
+        surfaceTexture.getTransformMatrix(mTextureTransformMatrix);
     }
 
     @Override
