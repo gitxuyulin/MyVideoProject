@@ -21,6 +21,8 @@ import java.nio.FloatBuffer;
 public class Shape_FBO {
 
     private static String TAG = "ShapeFBO";
+    //uTexture纹理取样器，vTextureCoord纹理坐标
+    //根据纹理取样器和纹理坐标可以得到像素颜色
     private String windowVertexShaderCode = ""
             + "attribute vec2 aPosition;"
             + "attribute vec2 aTextureCoord;"
@@ -112,6 +114,21 @@ public class Shape_FBO {
         return textures[0];
     }
 
+    /**
+     * 1.colorTextureId这个纹理缓存指定到FrameBuffer,与FrameBuffer中的数据进行关联,也就是说，现在colorTextureId就是FrameBuffer中数据所生成的图片。
+     * 2.在FrameBuffer中绘制读入的图片mLoadedTextureId。
+     * 3.在默认的窗口defaultFrameBuffer中绘制colorTextureId。
+     * 对照代码理解这张图，更有体会。
+     * 一般情况我们都是直接走红线进行绘制，FBO离屏渲染走绿线
+     * 可以在项目中crtl+f( GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, colorTxtureId);
+     * 将其中的colorTxtureId，替换为mLoadedTextureId，
+     * 并注释draw方法中==========================================================
+     * 以上的代码，你也会看到图片显示了出来。
+     * <p>
+     * 读取的图片---->mLoadedTextureId------->FrameBuffer------>colorTxtureId-------->默认窗口defaultFrameBuffer
+     * *********************|                                                                 个
+     * *********************-------------------------------------------------------------------
+     */
     public void draw(float[] mvpMatrix, float[] mMatrix) {
         // 生成FrameBuffer
         int[] framebuffers = new int[1];

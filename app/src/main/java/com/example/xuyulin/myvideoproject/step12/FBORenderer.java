@@ -13,8 +13,13 @@ import javax.microedition.khronos.opengles.GL10;
  * Create on 2019-12-20.
  * Describe: =>
  */
-public class FBORenderer implements GLSurfaceView.Renderer{
+public class FBORenderer implements GLSurfaceView.Renderer {
 
+    private final float[] mProjectionMatrix = new float[16];
+    private final float[] mViewMatrix = new float[16];
+    private final float[] mModuleMatrix = new float[16];
+    private final float[] mViewProjectionMatrix = new float[16];
+    private final float[] mMVPMatrix = new float[16];
     public static int sScreenWidth;
     public static int sScreenHeight;
     private Shape_FBO mRectangle;
@@ -39,19 +44,11 @@ public class FBORenderer implements GLSurfaceView.Renderer{
         sScreenWidth = width;
         sScreenHeight = height;
         GLES20.glViewport(0, 0, width, height);
-        Matrix.perspectiveM(mProjectionMatrix, 0, 45, (float)width/height, 2, 5);
-        Matrix.setLookAtM(mViewMatrix, 0, 0, 0, 3,  0, 0, 0, 0, 1, 0);
-
+        Matrix.perspectiveM(mProjectionMatrix, 0, 45, (float) width / height, 2, 5);
+        Matrix.setLookAtM(mViewMatrix, 0, 0, 0, 3, 0, 0, 0, 0, 1, 0);
     }
 
-    private final float[] mProjectionMatrix = new float[16];
-    private final float[] mViewMatrix = new float[16];
-    private final float[] mModuleMatrix = new float[16];
-    private final float[] mViewProjectionMatrix = new float[16];
-    private final float[] mMVPMatrix = new float[16];
-
     @Override
-
     public void onDrawFrame(GL10 gl) {
         Matrix.setIdentityM(mModuleMatrix, 0);
         Matrix.rotateM(mModuleMatrix, 0, xAngle, 1, 0, 0);
